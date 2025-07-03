@@ -1,0 +1,16 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment variables file
+.env
+
+# Ignore IDE/editor files (ongeza kama unatumia VSCode, PyCharm, nk)
+.vscode/
+.idea/
+
+# Ignore macOS system files (ikiwa unatumia Mac)
+.DS_Store
+
+# Ignore log files
+*.log
