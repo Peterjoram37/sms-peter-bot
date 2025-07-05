@@ -34,7 +34,8 @@ def sms_reply():
     else:
         reply = "Samahani, sikuelewa. Andika 'msaada' kwa maelezo zaidi."
 
-    sms.send(reply, [sender])
+    # Tuma SMS kutoka namba maalum
+    sms.send(reply, [sender], from_="+255753033342")
     return "OK", 200
 
 if __name__ == "__main__":
