@@ -1,14 +1,22 @@
 from flask import Flask, request
+import africastalking
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Soma .env file
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
-def sms_reply():
-    if request.method == "GET":
-        return "Service is running!", 200
+username = os.getenv("AT_USERNAME")
+api_key = os.getenv("AT_API_KEY")
 
-    incoming_msg = request.values.get("text", "").lower()
+africastalking.initialize(username, api_key)
+sms = africastalking.SMS
+
+@app.route("/sms", methods=["POST"])
+def sms_reply():
     sender = request.values.get("from")
+    incoming_msg = request.values.get("text", "").lower()
 
     if "habari" in incoming_msg:
         reply = "Habari yako! Karibu kwenye huduma yetu ya SMS."
@@ -26,8 +34,7 @@ def sms_reply():
     else:
         reply = "Samahani, sikuelewa. Andika 'msaada' kwa maelezo zaidi."
 
-    # Badala ya sms.send, tumia print au ongeza implementation yako ya sms
-    print(f"Tuma SMS kwa {sender}: {reply}")
+    sms.send(reply, [sender])
     return "OK", 200
 
 if __name__ == "__main__":
