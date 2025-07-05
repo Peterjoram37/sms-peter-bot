@@ -1,3 +1,6 @@
+from flask import Flask, request
+app = Flask(__name__)
+
 @app.route("/", methods=["POST"])
 def sms_reply():
     incoming_msg = request.values.get("text", "").lower()
