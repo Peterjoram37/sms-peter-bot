@@ -1,4 +1,5 @@
 from flask import Flask, request
+
 app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
@@ -22,5 +23,9 @@ def sms_reply():
     else:
         reply = "Samahani, sikuelewa. Andika 'msaada' kwa maelezo zaidi."
 
-    sms.send(reply, [sender])
+    # Badala ya sms.send, tumia print au ongeza implementation yako ya sms
+    print(f"Tuma SMS kwa {sender}: {reply}")
     return "OK", 200
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
