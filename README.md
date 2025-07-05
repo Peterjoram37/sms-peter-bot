@@ -2,35 +2,50 @@
 
 Mradi huu ni chatbot ya SMS iliyojengwa kwa Python na Flask, ikitumia Africa's Talking API.
 
-## Jinsi ya kuendesha
+## Features
+- Inajibu SMS kwa automatiska (majibu ya kawaida)
+- Inatoa huduma ya “lipa kwa simu” (Airtel, jina na namba umepewa)
+- Inaweza ku-hostiwa Render
 
-1. Weka `AT_USERNAME` na `AT_API_KEY` kwenye faili `.env`
-2. Sakinisha dependencies:
+## Jinsi ya kuanza
 
-## pip install -r requirements.txt
+1. **Clone repo na ingia kwenye folder:**
+    ```bash
+    git clone <repo yako>
+    cd sms-peter-bot
+    ```
 
-3. Endesha app:
+2. **Andaa environment variables:**
+    - Copy `.env.example` na uitunze kama `.env`, kisha jaza `AT_USERNAME` na `AT_API_KEY` zako za Africa's Talking.
 
-## python main.py
+3. **Sakinisha dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-4. Tumia [Ngrok](https://ngrok.com/) au host app kwenye Render.com
+4. **Endesha app (local):**
+    ```bash
+    python main.py
+    ```
 
-## Deploy kwenye Render.com
+5. **Deploy Render**
+    - Unganisha repo yako na Render.com
+    - Weka environment variables (AT_USERNAME na AT_API_KEY)
+    - Port ya app ni 5000 (default Flask)
+    - Hakikisha `gunicorn` imo kwenye requirements.txt kwa production
 
-- Unganisha repo yako na Render
-- Weka environment variables kwenye dashboard ya Render
-- Set port 5000
+## Njia za kutumia
 
+- Tuma SMS yenye neno “habari”, “msaada”, “nakupenda”, “lipa” au “malipo” kwenye namba yako ya Africa's Talking
+- Bot itajibu kwa ujumbe unaofaa
 
+## Malipo (Lipa kwa Simu)
+```
+LIPA KUPITIA LIPA KWA SIMU MITANDAO YOTE:
+Mtandao: Airtel
+Jina: PETER JORAM SICHILIMA
+Lipa namba: 66491201
+```
 
-
-
-
-
-
-
-
-
-
-
-
+## Credits
+Peter Joram Sichilima
