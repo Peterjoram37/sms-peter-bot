@@ -2,8 +2,11 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET", "POST"])
 def sms_reply():
+    if request.method == "GET":
+        return "Service is running!", 200
+
     incoming_msg = request.values.get("text", "").lower()
     sender = request.values.get("from")
 
